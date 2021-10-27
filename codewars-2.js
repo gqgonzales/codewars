@@ -96,7 +96,7 @@ function findUniqThree(arr) {
   arr.sort((a, b) => a - b);
   return arr[0] == arr[1] ? arr.pop() : arr[0];
   //   By using the pop method, we shorten the array and the return statement starts over.
-  //   Otherwise, return the first value, as it is the unique number.
+  //   Otherwise, return the first value, as it is the newCode number.
 }
 
 // console.log(findUniqThree([0, 1, 0, 0, 0, 0]));
@@ -123,15 +123,43 @@ function duplicateEncode(word) {
     .join("");
 }
 
-console.log(
-  "Expected: ()()()",
-  "-----",
-  "Returned:",
-  duplicateEncode("recede")
-);
-console.log(
-  "Expected: )())())",
-  "-----",
-  "Returned:",
-  duplicateEncode("Success")
-);
+// console.log(
+//   "Expected: ()()()",
+//   "-----",
+//   "Returned:",
+//   duplicateEncode("recede")
+// );
+// console.log(
+//   "Expected: )())())",
+//   "-----",
+//   "Returned:",
+//   duplicateEncode("Success")
+// );
+
+function duplicateEncodeTwo(word) {
+  let newCode = "";
+  word = word.toLowerCase();
+  for (var index = 0; index < word.length; index++) {
+    if (word.indexOf(word[index]) !== word.lastIndexOf(word[index])) {
+      // If current index does NOT match last index, the character is duplicated
+      newCode += ")";
+    } else {
+      // Otherwise, return the normal open paren.
+      newCode += "(";
+    }
+  }
+  return newCode;
+}
+
+// console.log(
+//   "Expected: ()()()",
+//   "-----",
+//   "Returned:",
+//   duplicateEncodeTwo("recede")
+// );
+// console.log(
+//   "Expected: )())())",
+//   "-----",
+//   "Returned:",
+//   duplicateEncodeTwo("Success")
+// );
