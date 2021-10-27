@@ -28,10 +28,11 @@ function likes(names) {
   }
 }
 
-// Solved!
-console.log(
-  likes(["Sam", "Alex", "Parker", "Cath", "Jack", "Lobstah", "Keem", "Ru"])
-);
+// Solved! 🥳
+
+// console.log(
+//   likes(["Sam", "Alex", "Parker", "Cath", "Jack", "Lobstah", "Keem", "Ru"])
+// );
 
 // Community solution using switch statement:
 function likesTwo(names) {
@@ -66,3 +67,38 @@ function likesTwo(names) {
 // console.log(
 //   likesTwo(["Sam", "Alex", "Parker", "Cath", "Jack", "Lobstah", "Keem", "Ru"])
 // );
+
+// -----------------------------------------------------------------------------------------------------------------------
+// There is an array with some numbers. All numbers are equal except for one. Try to find it!
+
+function findUniq(arr) {
+  for (let index = 0; index < arr.length; index++) {
+    if (arr[1] !== arr[0]) {
+      // They got me. This doesn't work for [0, 1, 0] because the first two values are unequal but the wrong value is returned
+      return arr[0];
+    } else if (arr[index] !== arr[index + 1]) {
+      return arr[index + 1];
+    }
+  }
+}
+
+// console.log(findUniq([0, 1, 0]));
+// Didn't get this one unfortunately.
+
+// Community solutions:
+function findUniqTwo(arr) {
+  return arr.find((n) => arr.indexOf(n) === arr.lastIndexOf(n));
+}
+
+// console.log(findUniqTwo([0, 1, 0]));
+
+function findUniqThree(arr) {
+  arr.sort((a, b) => a - b);
+  return arr[0] == arr[1] ? arr.pop() : arr[0];
+  //   By using the pop method, we shorten the array and the return statement starts over.
+  //   Otherwise, return the first value, as it is the unique number.
+}
+
+// console.log(findUniqThree([0, 1, 0, 0, 0, 0]));
+
+// -----------------------------------------------------------------------------------------------------------------------
