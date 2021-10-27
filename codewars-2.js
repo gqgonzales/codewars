@@ -102,3 +102,36 @@ function findUniqThree(arr) {
 // console.log(findUniqThree([0, 1, 0, 0, 0, 0]));
 
 // -----------------------------------------------------------------------------------------------------------------------
+
+// Duplicate Encoder
+// The goal of this exercise is to convert a string to a new string where
+// each character in the new string is "(" if that character appears only once in the original string,
+//  or ")" if that character appears more than once in the original string.
+// Ignore capitalization when determining if a character is a duplicate.
+
+function duplicateEncode(word) {
+  // frequency check and then .forEach the two values
+  // treat a string as a string, .toLowerCase(), check length
+  return word
+    .toLowerCase()
+    .split("")
+    .map((array, index, value) => {
+      //   If the current value's index equates to the last index, return true
+      return value.indexOf(array) == value.lastIndexOf(array) ? "(" : ")";
+      //   If the value is repeated, return false
+    })
+    .join("");
+}
+
+console.log(
+  "Expected: ()()()",
+  "-----",
+  "Returned:",
+  duplicateEncode("recede")
+);
+console.log(
+  "Expected: )())())",
+  "-----",
+  "Returned:",
+  duplicateEncode("Success")
+);
