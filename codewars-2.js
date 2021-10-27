@@ -115,9 +115,9 @@ function duplicateEncode(word) {
   return word
     .toLowerCase()
     .split("")
-    .map((array, index, value) => {
+    .map((element, index, array) => {
       //   If the current value's index equates to the last index, return true
-      return value.indexOf(array) == value.lastIndexOf(array) ? "(" : ")";
+      return array.indexOf(element) == array.lastIndexOf(element) ? "(" : ")";
       //   If the value is repeated, return false
     })
     .join("");
