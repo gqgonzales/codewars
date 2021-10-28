@@ -163,3 +163,99 @@ function duplicateEncodeTwo(word) {
 //   "Returned:",
 //   duplicateEncodeTwo("Success")
 // );
+
+// -----------------------------------------------------------------------------------------------------------------------
+
+// Count the smiley faces
+/* Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+
+Rules for a smiling face:
+
+Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+Every smiling face must have a smiling mouth that should be marked with either ) or D
+No additional characters are allowed except for those mentioned. */
+
+function countSmileys(arr) {
+  let counter = 0;
+  if (arr.length === 0) {
+    return counter;
+  } else {
+    return arr
+      .map((smiley) => {
+        if (smiley.length === 2) {
+          // If no nose is detected, check to see if the smiley has valid eyes and mouth.
+          let twofer = smiley.split("");
+          if (
+            (twofer[0] === ":" || twofer[0] === ";") &&
+            (twofer[1] === ")" || twofer[1] === "D")
+          ) {
+            return counter + 1;
+          }
+        } else {
+          let threeeee = smiley.split("");
+          // else, there's a nose, check to see if nose is valid with - or ~
+          if (
+            (threeeee[0] === ":" || threeeee[0] === ";") &&
+            (threeeee[1] === "-" || threeeee[1] === "~") &&
+            (threeeee[2] === ")" || threeeee[2] === "D")
+          ) {
+            return counter + 1;
+          }
+        }
+        return counter;
+      })
+      .reduce((a, b) => a + b);
+    // Use reduce to sum the counter array of values
+  }
+}
+
+// SOLVED!
+
+// console.log(
+//   "Expected: 4",
+//   "-----",
+//   "Returned:",
+//   countSmileys([":D", ":~)", ";~D", ":)"])
+// );
+// console.log("Expected: 0", "-----", "Returned:", countSmileys([]));
+// console.log(
+//   "Expected: 2",
+//   "-----",
+//   "Returned:",
+//   countSmileys([":)", ":(", ":D", ":O", ":;"])
+// );
+
+function countSmileysTwo(arr) {
+  return arr.filter((smiley) => {
+    // We use a .filter to only return values that fit a certain criteria
+    return (
+      /^[:;][-~]?[)D]$/
+        // ^ marks the start of the string
+        // $ marks the end of the string
+        // / should be at the start and at the end of the regular expresion
+        // and ? makes the previous optional. So we put the question mark after the nose because it doesn't HAVE to rest for that.
+        .test(smiley)
+      // The test() method executes a search for a match between a regular expression and a specified string. Returns true or false.
+    );
+  }).length;
+  // the length method checks to see how many smileys are left in the array after our filtering!
+  // Again, only smileys that have passed the true/false test are returned.
+}
+
+// console.log(
+//   "Expected: 4",
+//   "-----",
+//   "Returned:",
+//   countSmileysTwo([":D", ":~)", ";~D", ":)"])
+// );
+// console.log("Expected: 0", "-----", "Returned:", countSmileysTwo([]));
+
+// console.log(
+//   "Expected: 2",
+//   "-----",
+//   "Returned:",
+//   countSmileysTwo([":)", ":(", ":D", ":O", ":;"])
+// );
+
+// -----------------------------------------------------------------------------------------------------------------------
