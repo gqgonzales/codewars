@@ -19,6 +19,8 @@ function generateHashtag(str) {
   } else return false;
 }
 
+// Solved! 🥳
+
 // console.log(
 //   "Expected:",
 //   false,

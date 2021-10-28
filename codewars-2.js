@@ -210,7 +210,7 @@ function countSmileys(arr) {
   }
 }
 
-// SOLVED!
+// Solved! 🥳
 
 // console.log(
 //   "Expected: 4",
